@@ -114,7 +114,7 @@
  * Currently Ethernet (-2) is only supported on Teensy 4.1 boards.
  * :[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT_2 1
+//#define SERIAL_PORT_2 1
 
 /**
  * This setting determines the communication speed of the printer.
@@ -125,7 +125,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 1000000
+#define BAUDRATE 250000
 
 // Enable the Bluetooth serial interface on AT90USB devices
 //#define BLUETOOTH
@@ -497,9 +497,9 @@
     #define DEFAULT_Kd_LIST { 48.43, 48.43 }
   #else
     // Bluer
-    #define DEFAULT_Kp 11.03
-    #define DEFAULT_Ki  0.63
-    #define DEFAULT_Kd 48.43
+    #define DEFAULT_Kp  9.37
+    #define DEFAULT_Ki  0.43
+    #define DEFAULT_Kd 51.08
   #endif
 #endif // PIDTEMP
 
@@ -538,9 +538,9 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
+  #define DEFAULT_bedKp 48.14
+  #define DEFAULT_bedKi 8.96
+  #define DEFAULT_bedKd 172.4
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -685,7 +685,7 @@
 #else
   #define X_DRIVER_TYPE TMC2208_STANDALONE
   #define Y_DRIVER_TYPE TMC2208_STANDALONE
-  #define Z_DRIVER_TYPE A4988
+  #define Z_DRIVER_TYPE TMC2208_STANDALONE
 #endif
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
@@ -695,7 +695,7 @@
 #if ENABLED(BLUER_TMC2209)
   #define E0_DRIVER_TYPE TMC2209_STANDALONE
 #else
-  #define E0_DRIVER_TYPE A4988
+  #define E0_DRIVER_TYPE DRV8825
 #endif
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
@@ -1105,7 +1105,7 @@
 #if ENABLED(BLUER_TMC2209)
   #define INVERT_Z_DIR false
 #else
-  #define INVERT_Z_DIR true
+  #define INVERT_Z_DIR false
 #endif
 
 // @section extruder
@@ -1401,7 +1401,7 @@
   //===========================================================================
 
   #define MESH_INSET 15         // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 4    // Don't use more than 7 points per axis, implementation limited.
+  #define GRID_MAX_POINTS_X 3    // Don't use more than 7 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   //#define MESH_G28_REST_ORIGIN // After homing all axes ('G28' or 'G28 XYZ') rest Z at Z_MIN_POS

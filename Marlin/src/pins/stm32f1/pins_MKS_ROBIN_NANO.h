@@ -81,6 +81,42 @@
 #define E1_STEP_PIN                         PA6
 #define E1_DIR_PIN                          PA1
 
+#if HAS_TMC_UART
+  /**
+   * TMC2208/TMC2209 stepper drivers
+   *
+   * Hardware serial communication ports.
+   * If undefined software serial is used according to the pins below
+   */
+  //#define X_HARDWARE_SERIAL  MSerial1
+  //#define Y_HARDWARE_SERIAL  MSerial1
+  //#define Z_HARDWARE_SERIAL  MSerial1
+  //#define E0_HARDWARE_SERIAL MSerial1
+  //#define E1_HARDWARE_SERIAL MSerial1
+
+  //
+  // Software serial
+  //
+
+  #define X_SERIAL_TX_PIN                   PA10
+  #define X_SERIAL_RX_PIN                   PA10
+
+  #define Y_SERIAL_TX_PIN                   PA9
+  #define Y_SERIAL_RX_PIN                   PA9
+
+  #define Z_SERIAL_TX_PIN                   PC7
+  #define Z_SERIAL_RX_PIN                   PC7
+
+  #define E0_SERIAL_TX_PIN                  PC13
+  #define E0_SERIAL_RX_PIN                  PC13
+
+  //#define E1_SERIAL_TX_PIN                  PD8
+  //#define E1_SERIAL_RX_PIN                  PD8
+
+  // Reduce baud rate to improve software serial reliability
+  #define TMC_BAUD_RATE                    19200
+#endif // TMC2208 || TMC2209
+
 //
 // Temperature Sensors
 //
